@@ -43,6 +43,7 @@
 		            <option> ( a + b ) * c - d </option>
 		            <option> ( a + b ) * ( c - d ) </option>
 		            <option> a * d % ( c - b ) * c - a * b </option>
+								<option> a *(b+c) </option>
 		        </select>
 		        <select class = 'button loopList hide' id = 'logicalExpressions' >
 		     		<option> a || b && c </option>
@@ -66,8 +67,8 @@
 			<div class = 'executionDivisionTitle' ><div class = 'executionPic' ></div><div class = 'executionText' >Evaluation Flow of Expression</div></div>
 			<div class = 'stepExecutionDisplay' id = 'executionDisplay'></div><!-- end of stepExecutionDisplay -->
 		</div><!-- end of executionDivision -->
-			
-		<div class = 'outputDivision'> 
+
+		<div class = 'outputDivision'>
 			<div class = 'outputDivisionTitle' ><div class = 'outputPic' ></div><div class = 'outputText' >Code Output</div></div>
 			<div class = 'resultDisplay'>
 				<div class = 'reasoningTitle'>Step by step reasoning : </div>
