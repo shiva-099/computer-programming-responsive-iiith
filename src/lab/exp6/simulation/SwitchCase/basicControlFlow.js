@@ -27,7 +27,7 @@ window.view = {
 		this.addClickEvent('submitBtnId', function() { view.validationInput() });
 		this.addClickEvent('startBtnId', function() { view.startStepExecution() });
 		this.addClickEvent('nextBtnId', function() { view.showDayOfWeek() });
-		this.addClickEvent('resetBtnId', function() { view.resetButtonSwitch() });	
+		this.addClickEvent('resetBtnId', function() { view.resetButtonSwitch() });
 	},
 	// setInnerHtml: set innerText to a element.
  	setInnerHtml: function (id, innerHTML) {
@@ -44,7 +44,7 @@ window.view = {
     	// replaceElement: replace one element by another element.
     	replaceElement: function (id1, id2) {
     		document.getElementById(id1).style.display = 'none';
-    		document.getElementById(id2).style.display = 'block';  	 
+    		document.getElementById(id2).style.display = 'block';
     	},
     	// changeClass: changes class name of a element.
 	changeClass: function(id, className) {
@@ -96,7 +96,7 @@ window.view = {
 	showDay: function (id, previousChildId, imagesId, innerHTMLId, innerHTML) {
 		this.codeExecutionWithColourAndId(id);
 		this.setInnerHtml(innerHTMLId, innerHTML);
-		this.changeOpacity(imagesId);	
+		this.changeOpacity(imagesId);
 	},
 	// jumpToDay: to jump on desire day.
 	jumpToDay: function () {
@@ -124,7 +124,7 @@ window.view = {
   				break;
   			default:
   				this.showDay('defaultId', this.currentSiblingElement.id, null, 'strNullId', 'null');
-        		break;	
+        		break;
 		}
 	},
 	/* validationInput: check validation of input that is given by user if input value is valid
@@ -134,12 +134,12 @@ window.view = {
 		if (textFieldValue === '' || isNaN(textFieldValue)) {
 			alert('Enter Numeric Values Only');
 			return false;
-		} 
+		}
 		else {
 			this.changePropertyOfElements();
 			model.inputNumber = Number(textFieldValue);
 			this.setInnerHtml('idOfDay', model.inputNumber);
-		}		
+		}
 	},
 	// changePropertyOfElements: changes property of elemants with enableElement, disableElement and changeClass.
 	changePropertyOfElements: function () {
@@ -221,7 +221,7 @@ window.view = {
 			this.codeExecutionWithColour();
 	 	if (this.currentSiblingElement.className === 'break redClass')
 			this.codeExecutionWithColourAndId('closeBrc1Id');
-		if (1 <= model.inputNumber && model.inputNumber <= 6) {
+		if ((1 <= model.inputNumber && model.inputNumber <= 5)||model.inputNumber <= 7) {
 	 		if (this.nextSiblingElement.id === 'holidayId')
 				this.codeExecutionWithColourAndId('elseIfId');
 	 		else if (this.nextSiblingElement.id === 'workingdayId') {
@@ -233,14 +233,14 @@ window.view = {
 		if ( model.inputNumber > 7 ) {
 	 		if (this.nextSiblingElement.id === 'holidayId')
 				this.codeExecutionWithColourAndId('elseIfId');
-	 		else if (this.nextSiblingElement.id === 'workingdayId') 
+	 		else if (this.nextSiblingElement.id === 'workingdayId')
 				this.codeExecutionWithColourAndId('elseId');
 	 		else if (this.nextSiblingElement.id === 'invalidIPId') {
 				this.codeExecutionWithColour();
 				this.setInnerHtml('outputDayId', 'INVALID INPUT');
 	 		}
 	 	}
-	 	if (model.inputNumber === 7) {
+	 	if (model.inputNumber === 6) {
 	 		if (this.nextSiblingElement.id === 'holidayId') {
 				this.codeExecutionWithColour();
 				this.changeOpacity('holidayImage');
@@ -260,6 +260,6 @@ window.view = {
 	}
 }
 // onload function: call init method on window onload.
-window.onload = function () { 
+window.onload = function () {
 	view.init();
 }
