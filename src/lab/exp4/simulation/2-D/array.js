@@ -94,9 +94,9 @@ window.view = {
 		else if ( isNaN(row) || isNaN(col) )
 			alert('Matrix Size Must Be An Integer Value !')
 		else
-		{	
+		{
 			if ( this.matrixCount === 1 )
-			{	
+			{
 				this.enableButton('generateA')
 				this.changeClass( 'generateA', 'button GenerateValueButton' )
 				this.rowsA = row
@@ -119,10 +119,10 @@ window.view = {
 	},
 	generateFirstMatrixElements: function() {
 		var size = this.rowsA * this.colsA
-		for ( i = 0 ; i < size ; i++)
+		for ( i = 1 ; i <= size ; i++)
 		{
-			var random = Math.floor(Math.random()*15)
-			this.matrixA.push(random)
+
+			this.matrixA.push(i)
 		}
 		this.resetRowsAndCols()
 		this.disableButton('row')
@@ -135,10 +135,10 @@ window.view = {
 	},
 	generateSecondMatrixElements: function() {
 		var size = this.rowsB * this.colsB
-		for ( i = 0 ; i < size ; i++)
+		for ( i = 1 ; i <= size ; i++)
 		{
-			var random = Math.floor(Math.random()*15)
-			this.matrixB.push(random)
+
+			this.matrixB.push(i)
 		}
 		this.disableButton('generateB')
 		this.changeClass( 'generateB', 'buttonDisable GenerateValueButton show' )
@@ -152,7 +152,7 @@ window.view = {
 		 // var caption = matA.createCaption();
 		 // caption.innerHTML = ""
 		for ( i = 0 ; i < this.rowsA ; i++ )
-		{	
+		{
 			var row = document.createElement('tr')
 			for ( j = 0 ; j < this.colsA ; j++ )
 			{
@@ -175,7 +175,7 @@ window.view = {
 		// var caption = matB.createCaption();
 		// caption.innerHTML = "<b>Matrix B</b>"
 		for ( i = 0 ; i < this.rowsB ; i++ )
-		{	
+		{
 			var row = document.createElement('tr')
 			for ( j = 0 ; j < this.colsB ; j++ )
 			{
@@ -198,7 +198,7 @@ window.view = {
 		// var caption = matResultant.createCaption();
 		// caption.innerHTML = "<b>Resultant Matrix</b>"
 		for ( i = 0 ; i < this.rowsA ; i++ )
-		{	
+		{
 			var row = document.createElement('tr')
 			for ( j = 0 ; j < this.colsB ; j++ )
 			{
@@ -228,7 +228,7 @@ window.view = {
 	},
 	highlightRowMatrixA: function() {
 		var tableA = document.getElementById('matrixA').firstChild
-		for ( model.i, model.j ; model.j < this.colsA ; model.j ++ )	
+		for ( model.i, model.j ; model.j < this.colsA ; model.j ++ )
 			tableA.rows[model.i].cells[model.j].className = 'matrixCell blueCell'
 		model.j = 0
 	},
@@ -241,7 +241,7 @@ window.view = {
 		if ( model.q > 0 )
 		{
 			var tableA = document.getElementById('matrixA').firstChild
-			for ( model.i, model.j ; model.j < this.colsA ; model.j ++ )	
+			for ( model.i, model.j ; model.j < this.colsA ; model.j ++ )
 				tableA.rows[model.i].cells[model.j].className = 'matrixCell blueCell'
 			var tableB = document.getElementById('matrixB').firstChild
 			for ( model.p, model.q ; model.p < this.rowsB ; model.p ++ )
@@ -287,14 +287,14 @@ window.view = {
 		if ( model.i > 0 )
 		{
 			var tableA = document.getElementById('matrixA').firstChild
-			for ( model.i, model.j ; model.j < this.colsA ; model.j ++ )	
-				tableA.rows[model.i - 1].cells[model.j].className = 'matrixCell' 
+			for ( model.i, model.j ; model.j < this.colsA ; model.j ++ )
+				tableA.rows[model.i - 1].cells[model.j].className = 'matrixCell'
 			model.j = 0
 		}
 	},
 	highlightNextRow: function() {
 			var tableA = document.getElementById('matrixA').firstChild
-			for ( model.i, model.j ; model.j < this.colsA ; model.j ++ )	
+			for ( model.i, model.j ; model.j < this.colsA ; model.j ++ )
 				tableA.rows[model.i].cells[model.j].className = 'matrixCell blueCell'
 			var tableB = document.getElementById('matrixB').firstChild
 			for ( model.p, model.q ; model.p < this.rowsB ; model.p ++ )
