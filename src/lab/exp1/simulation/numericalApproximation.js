@@ -7,13 +7,13 @@ window.model = {
 	inputValueA
 : '', // user input a.
 	inputValueB: '', // usre input b.
-	sum: 0, //total sum that compute by computeSum method. 
+	sum: 0, //total sum that compute by computeSum method.
 	width: 1, //width of executing one step.
 	//  computeSum: compute total sum of area under cos curve.
 	computeSum: function () {
     	this.sum = this.sum + Math.cos(2 * Math.PI/13 * this.inputValueA) * this.width;
     	},
-	/* incrementInWidth: compute increment in inputValueA, that represent 
+	/* incrementInWidth: compute increment in inputValueA, that represent
 	total width of curve from starting point to current point */
 	incrementInWidth: function () {
     	this.inputValueA = this.inputValueA + this.width;
@@ -27,7 +27,7 @@ window.view = {
 	sum: 0, //  round up the sum(model.sum) value to 2 decimal points.
 	canvasContext: '', // canvasContext have many properties and methods for drawing paths, boxes, circles, text, images, and more.
 	canvas: new Object(), // Object value of canvas.
-	currentSiblingElement: new Object(), //  Object value of current sibling. 
+	currentSiblingElement: new Object(), //  Object value of current sibling.
 	nextSiblingElement: new Object(), //  Object value of next sibling.
 	// addClickEvent: add EventListener to other methods.
 	addClickEvent: function (id, method) {
@@ -95,7 +95,7 @@ window.view = {
 	setInnerHtml: function (id, innerHTML) {
  		document.getElementById(id).innerHTML = innerHTML;
  	},
- 	// resetVariables: reset all variables to it's initial state. 
+ 	// resetVariables: reset all variables to it's initial state.
  	resetVariables: function () {
  		model.inputValueA = '';
 		model.inputValueB = '';
@@ -149,7 +149,7 @@ window.view = {
 	drawAxis: function () {
 		this.getCanvas();
 		this.canvasContext.beginPath();
-		this.canvasContext.moveTo(20, 0); // 20 is x-coordinate value and 0 is y-coordinate value. 
+		this.canvasContext.moveTo(20, 0); // 20 is x-coordinate value and 0 is y-coordinate value.
 		this.canvasContext.lineTo(20, 300); // 20 is x-coordinate value and 360 is y-coordinate value.
 		this.canvasContext.moveTo(20, 150); // 20 is x-coordinate value and 180 is y-coordinate value.
 		this.canvasContext.lineTo(420, 150); // 520 is x-coordinate value and 180 is y-coordinate value.
@@ -157,7 +157,7 @@ window.view = {
 		this.canvasContext.lineWidth = 2;
 		this.canvasContext.stroke();
 	},
-	// drawText: labels x-axis and y-axis with text on canvas. 
+	// drawText: labels x-axis and y-axis with text on canvas.
 	drawText: function () {
 		this.canvasContext.font = '18px Arial';
 		this.canvasContext.beginPath();
@@ -182,14 +182,14 @@ window.view = {
 			this.canvasContext.lineTo(25, position);
 		}
 		for (var position = 70; position <= 420; position += 50) {
-			
+
 			this.canvasContext.moveTo(position, 145); // position is x-coordinate value and 175 or 185 are y-coordinate value where intersectlines to be display.
 			this.canvasContext.lineTo(position, 155);
 		}
 		this.canvasContext.lineWidth = 2;
 		this.canvasContext.stroke();
 	},
-	// drawHorizontalLine: shows horizontal lines on canvas. 
+	// drawHorizontalLine: shows horizontal lines on canvas.
 	drawHorizontalLine: function () {
 		this.canvasContext.beginPath();
 		for (var position = 10; position <= 300; position += 35) {
@@ -213,7 +213,7 @@ window.view = {
 		this.canvasContext.lineWidth = 1;
 		this.canvasContext.stroke();
 	},
-	// drawCosCurve: draw cos curve.  
+	// drawCosCurve: draw cos curve.
 	drawCosCurve: function () {
 		this.canvasContext.beginPath();
 		var xAxis; // represent x-coordinate value.
@@ -222,7 +222,7 @@ window.view = {
 		for (xAxis = 20; xAxis <= 420; xAxis++) {
 			var y = 70*Math.cos(0 + (xAxis - 20) * this.wavelengthController)
 			//alert(y);
-			yAxis = 70 + (80 - (y))// 80 is y-coordinate value from where cose curve start. 
+			yAxis = 70 + (80 - (y))// 80 is y-coordinate value from where cose curve start.
 			this.canvasContext.lineTo(xAxis, yAxis)
 		}
 		this.canvasContext.strokeStyle = '#F7971E';
@@ -275,7 +275,7 @@ window.view = {
 		this.drawCosCurve();
 		this.canvasContext.save();
 	},
-	/* validationInput: check validation of input that is given by user and if input value is valid 
+	/* validationInput: check validation of input that is given by user and if input value is valid
 	then make text field and ok button disable and make start button enable. */
 	validationInput: function () {
 		var valueA1 = this.getValue('valueA');
@@ -289,9 +289,9 @@ window.view = {
 		else if ( isNaN(valueA1) || isNaN(valueB1)) {
 			alert('Enter numeric value of a and b');
 			return false;
-		} 
-		else if (valueA2 >= valueB2 || valueB2 > 30) {
-			alert('Integration Limits are from 0 to 30, b > a and b-a >= 1');
+		}
+		else if (valueA2 >= valueB2 || valueB2 > 10||valueA2 > 10) {
+			alert('Integration Limits are from 0 to 10, b > a and b-a >= 1');
 			return false;
 		}
 		else {
@@ -332,8 +332,8 @@ window.view = {
 	stopExperiment: function () {
 		this.endOfExecution();
 	},
-	/* plotCurveArea: fill area under cos curve, show value of i and sum according code execution, 
-	and at the end of code execution display final result. */  
+	/* plotCurveArea: fill area under cos curve, show value of i and sum according code execution,
+	and at the end of code execution display final result. */
 	plotCurveArea: function () {
 		this.currentSiblingElement = this.getElementByClass('redClass');
 		if (this.currentSiblingElement.id === 'NumApproCodeContent10') {
