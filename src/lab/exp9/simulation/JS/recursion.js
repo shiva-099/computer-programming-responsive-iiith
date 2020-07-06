@@ -23,8 +23,8 @@ window.view = {
 		 	alert('Enter number of disks first !')
 		 else if ( isNaN(input) === true )
 			alert('Number of disks must be an integer value !')
-		 else if ( input > 5 || input % 1 !== 0 )
-			alert('Only integral value (Greater than equal to 1 and less than equal to 5) is accepted !')
+		 else if ( input > 10 || input % 1 !== 0 )
+			alert('Only integral value (Greater than equal to 1 and less than equal to 10) is accepted !')
 		 else {
 			this.disableElement('btnOk')
 			this.enableElement('btnStart')
@@ -106,7 +106,7 @@ window.view = {
 		this.S = temp
 	},
 	moveDisksAround: function() {
-		var source, destination, sourceClass, destinationClass, sourceLastChild, destinationLastChild 
+		var source, destination, sourceClass, destinationClass, sourceLastChild, destinationLastChild
 		var sourceDiskClass = ''
 		var destinationPositionClass = ''
 		source = document.getElementById(String(this.S)).childNodes
@@ -129,7 +129,7 @@ window.view = {
 		}
 		var elementClass = sourceLastChild.className.split(' ')
 		sourceLastChild.className = elementClass[0]
-		destinationLastChild.className += ' ' + sourceDiskClass 
+		destinationLastChild.className += ' ' + sourceDiskClass
 	},
 	executeFirstFunctionCall: function() {
 		document.getElementById('line10').style.fontWeight = 'bold'
@@ -224,7 +224,7 @@ window.view = {
 				this.callerFunction = 'none'
 			}
 		}
-		else 
+		else
 			this.highlightNextStep()
 	},
 	proceed: function() {
@@ -254,7 +254,7 @@ window.view = {
 				else {
 					this.terminate()
 				}
-			}	
+			}
 		}
 	},
 	clearSecondPillar: function() {
@@ -290,4 +290,4 @@ window.view = {
 		this.activateEvents()
 	}
 }
-window.onload = function() { view.init() }																										
+window.onload = function() { view.init() }
